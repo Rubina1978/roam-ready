@@ -10,6 +10,7 @@ curtsies==0.4.3
 cwcwidth==0.1.12
 dj-database-url==3.0.1
 Django==4.2.29
+django-countries==8.2.0
 djlint==1.36.4
 EditorConfig==0.17.1
 greenlet==3.3.1
@@ -31,6 +32,7 @@ setuptools==80.9.0
 six==1.17.0
 sqlparse==0.5.3
 tqdm==4.67.1
+typing_extensions==4.15.0
 tzdata==2025.2
 urllib3==2.6.3
 wcwidth==0.6.0
