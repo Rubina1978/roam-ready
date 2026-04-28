@@ -2,6 +2,9 @@ from django.db import models
 from django_countries.fields import CountryField
 from django.contrib.auth.models import User
 
+
+STATUS = ((0, "Draft"), (1, "Published"))
+
 # Create your models here.
 
 
@@ -10,9 +13,11 @@ class Destination(models.Model):
     country = CountryField()
     category = models.CharField(max_length=50)
     description = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=1)
 
     class Meta:
-        ordering = ['country', 'category']
+        ordering = ['country', 'category', 'created_on']
 
     def __str__(self):
         return self.name
@@ -34,6 +39,7 @@ class Comment(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user} - {self.destination.name}"
