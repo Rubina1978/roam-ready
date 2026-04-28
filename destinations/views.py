@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from django.views import generic
+from .models import Destination
 
 # Create your views here.
 
 
-def home(request):
-    return HttpResponse("Hello, home!")
-
-
+class DestinationsList(generic.ListView):
+    queryset = Destination.objects.all()
+    template_name = "destinations/home.html"
+    context_object_name = "destinations"

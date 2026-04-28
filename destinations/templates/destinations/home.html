@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoamReady</title>
+</head>
+<body>
+    <h1>RoamReady Destinations</h1>
+    {% for destination in destinations %}
+    <h2>{{destination.name}}</h2>
+    <p>{{destination.country}}</p>
+    <p> {{destination.description}}</p>
+    {% endfor %}
+</body>
+</html>
