@@ -1,16 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoamReady</title>
-</head>
-<body>
-    <h1>RoamReady Destinations</h1>
-    {% for destination in destinations %}
-    <h2>{{destination.name}}</h2>
-    <p>{{destination.country}}</p>
-    <p> {{destination.description}}</p>
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  <h1>RoamReady Destinations</h1>
+    <div class="row">
+
+        <div class="col-12 mt-3 left">
+            <div class="row">
+
+                {% for destination in destinations %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+
+                            <h2 class="card-title">
+                                {{ destination.name }}
+                            </h2>
+
+                            <p class="card-text">
+                                {{ destination.description }}
+                            </p>
+
+                            <p class="card-text text-muted">
+                                {{ destination.country }}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+
+                {% endfor %}
+                
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
