@@ -13,12 +13,17 @@
                 {% for destination in destinations %}
                 <div class="col-md-4">
                     <div class="card mb-4">
+                      {% comment %} link prepared for image {% endcomment %}
+                      {% if destination.image %}
+                          <img src="{{ destination.image.url }}" class="card-img-top" alt="{{ destination.name }}">
                         <div class="card-body">
-
+                      {% endif %}    
+                          {% comment %} link prepared for detail page {% endcomment %}
+                          <a href="{% 'destination_detail' destination.id %}" class="text-decoration-none">
                             <h2 class="card-title">
                                 {{ destination.name }}
                             </h2>
-
+                          </a>
                             <p class="card-text">
                                 {{ destination.description }}
                             </p>
