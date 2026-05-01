@@ -17,11 +17,11 @@
                       {% if destination.image %}
                           <img src="{{ destination.image.url }}" class="card-img-top" alt="{{ destination.name }}">
                        {% endif %}  
-                       
+
                           <div class="card-body">
                          
-                          {% comment %} link prepared for detail page {% endcomment %}
-                          <a href="#" class="text-decoration-none post-link">
+                          {% comment %} link prepared for detail page, used chatgpt to set the link {% endcomment %}
+                          <a href="{% url 'destination_detail' destination.pk %}" class="text-decoration-none post-link">
                             <h2 class="card-title">
                                 {{ destination.name }}
                             </h2>
