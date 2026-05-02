@@ -25,11 +25,50 @@
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text">
-                    {{ destination.description|safe }}
+                    {{ destination.description | safe }}
                 </p>
             </div>
         </div>
     </div>
 </div>
+
+{% comment %} {% tips section %} {% endcomment %}
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+        <h3>Tips</h3>
+            {% for tip in destination.tips.all %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tip.tip_type}}</h5>
+                    <p class="card-text">{{tip.content}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <h3>Comments</h3>
+            {% for comment in destination.comments.all %} 
+        
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ comment.text }}
+                    </p>
+                    <p class="card-text text-muted">
+                        {{ comment.user }}, {{comment.created_on}}
+                    </p>
+                </div>
+            </div>  
+        </div>
+   {% endfor %}     
+    </div>
+</div>
+
 
 {% endblock content %}
