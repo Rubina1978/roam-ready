@@ -159,3 +159,29 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+.auth-page {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-text {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
