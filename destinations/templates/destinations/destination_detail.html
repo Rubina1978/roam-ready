@@ -36,8 +36,8 @@
 {% comment %} {% tips section %} {% endcomment %}
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-        <h3>Tips</h3>
+        <div class="col-md-8">
+            <h3>Tips</h3>
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
                 <div class="card-body">
@@ -45,9 +45,28 @@
                     <p class="card-text">{{tip.content}}</p>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+        <div class="col-md-4">
+            <div class="card mb-4 mt-3">
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <h4>Add a tip</h4>
+                    <p class="mb-2">Posting as: {{ user.username }}</p>
+                    <form id="tipForm" method="post" style="margin-top: 1.3em;">
+                        {% csrf_token %}
+                        {{ tip_form|crispy }}
+                        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+        </form>
+        {% else %}
+        <p>Log in to share a tip</p>
+        {% endif %}
+      </div>
+        </div>
     </div>
+    <!-- Creating New Tip-->
+    
 </div>
     {% comment %} displaying commentcount {% endcomment %}
 <div class="container">

@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
 from .models import Destination
-from .forms import CommentForm
+from .forms import CommentForm, TipForm
 
 # Create your views here.
 
@@ -23,6 +23,7 @@ def destination_detail(request, pk):
     destination = get_object_or_404(Destination, pk=pk)
     comments = destination.comments.all().order_by("-created_on")
     comment_count = destination.comments.filter(approved=True).count()
+    tips = destination.tips.all().order_by("tip_type")
 
 #{% comment %}handling the comments{ % endcomment %}
     if request.method == "POST":
@@ -39,11 +40,22 @@ def destination_detail(request, pk):
 
     comment_form = CommentForm()
 
+    if request.method == "POST":
+        tip_form = TipForm(request.POST)
+        if tip_form.is_valid():
+            tips = tip_form.save(commit=False)
+            tips.user = request.user
+            tips.destination = destination
+            tips.save()
+   
+    tip_form = TipForm()
+
     return render(
         request, 
         "destinations/destination_detail.html", 
         {"destination": destination,
          "comments":comments,
          "comment_count": comment_count,
-         "comment_form": comment_form} 
+         "comment_form": comment_form,
+         "tip_form": tip_form} 
          )
