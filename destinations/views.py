@@ -19,5 +19,13 @@ def destination_detail(request, pk):
     """Display single destination page."""
 
     destination = get_object_or_404(Destination, pk=pk)
+    comments = destination.comments.all().order_by("-created_on")
+    comment_count = comments.filter(approved=True).count()
 
-    return render(request, "destinations/destination_detail.html", {"destination": destination}, )
+    return render(
+        request, 
+        "destinations/destination_detail.html", 
+        {"destination": destination,
+         "comments":comments,
+         "comment_count": comment_count} 
+         )
