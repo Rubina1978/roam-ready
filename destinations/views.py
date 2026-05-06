@@ -39,7 +39,7 @@ def destination_detail(request, pk):
             )
 
     comment_form = CommentForm()
-
+# tip handling
     if request.method == "POST":
         tip_form = TipForm(request.POST)
         if tip_form.is_valid():
@@ -47,6 +47,10 @@ def destination_detail(request, pk):
             tips.user = request.user
             tips.destination = destination
             tips.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Tip submitted and awaiting approval'
+    )
    
     tip_form = TipForm()
 
