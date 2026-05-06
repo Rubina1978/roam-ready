@@ -40,11 +40,18 @@
             <h3>Tips</h3>
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
-                <div class="card-body">
+                <div class="card-body {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
                     <h5 class="card-title">{{ tip.tip_type}}</h5>
-                    <p class="card-text">{{tip.content}}</p>
-                </div>
+                    <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content }}</p>
+                    <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.user }}</p>
+
+                    {% if not tip.approved and tip.user == user %}
+                    <p class="approval">This comment is awaiting approval</p>
+                    {% endif %}</p>
+                </div>    
             </div>
+            {% empty %}
+            <p class="text-muted">No tips yet</p>
             {% endfor %}
         </div>
 
