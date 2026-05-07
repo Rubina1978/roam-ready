@@ -1,8 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
-from .models import Destination
+from django.http import HttpResponseRedirect
+from .models import Destination, Comment, Tip
 from .forms import CommentForm, TipForm
 
 # Create your views here.
@@ -39,6 +40,7 @@ def destination_detail(request, pk):
             )
 
     comment_form = CommentForm()
+    
 # tip handling
     if request.method == "POST":
         tip_form = TipForm(request.POST)
@@ -61,5 +63,27 @@ def destination_detail(request, pk):
          "comments":comments,
          "comment_count": comment_count,
          "comment_form": comment_form,
-         "tip_form": tip_form} 
-         )
+         "tip_form": tip_form
+         },
+         
+    )
+
+def comment_edit(request, destination_id, comment_id):
+    """View for editing comments"""
+    """built with help of ChatGPT"""
+
+    if request.method == "POST":
+
+        destination = get_object_or_404(Destination,  pk=destination_id)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment_form = CommentForm(data=request.POST, instance=comment)
+        if comment_form.is_valid() and comment.user == request.user:
+            comment = comment_form.save(commit=False)
+            comment.destination = destination
+            comment.approve = False
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment was updated successfully!')
+        else: 
+            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
+
+            return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))

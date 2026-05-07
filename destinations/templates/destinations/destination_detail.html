@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
+            <div class="card-body ">
                 
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
@@ -40,7 +40,7 @@
             <h3>Tips</h3>
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
-                <div class="card-body {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
+                <div class="card-body  {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
                     <h5 class="card-title">{{ tip.tip_type}}</h5>
                     <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content }}</p>
                     <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.user }}</p>
@@ -63,7 +63,7 @@
                     <p class="mb-2">Posting as: {{ user.username }}</p>
                     <form id="tipForm" method="post" style="margin-top: 1.3em;">
                         {% csrf_token %}
-                        {{ tip_form|crispy }}
+                        {{ tip_form | crispy }}
                         <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
         </form>
         {% else %}
@@ -95,11 +95,14 @@
             {% for comment in destination.comments.all %}
             <div class="card mb-2">
                 <div class="card-body {% if not comment.approved and comment.user == user %}faded{% elif not comment.approved %}d-none{% endif %}">
-                    <p class="card-text">{{ comment.text }}</p>
-                    <p class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
+                    <p class="card-id">{{ comment.text | linebreaks }}</p>
+                    <p id="comment{{ comment.id}}" class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
 
                     {% if not comment.approved and comment.user == user %}
                     <p class="approval">This comment is awaiting approval</p>
+                    {% endif %}
+                    {% if user.is_authenticated and comment.user == user %}
+                    <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
             </div>
@@ -116,7 +119,7 @@
                     <p class="mb-2">Posting as: {{ user.username }}</p>
                     <form id="commentForm" method="post" style="margin-top: 1.3em;">
                         {% csrf_token %}
-                        {{ comment_form|crispy }}
+                        {{ comment_form | crispy}}
                         <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
                     </form>
                     {% else %}
@@ -128,5 +131,7 @@
     </div>
 </div>
 
-
 {% endblock content %}
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
