@@ -41,13 +41,16 @@
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
                 <div class="card-body  {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
-                    <h5 class="card-title">{{ tip.tip_type}}</h5>
-                    <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content }}</p>
+                    <h5 id="tiptype{{ tip.id }}" class="card-title">{{ tip.tip_type}}</h5>
+                    <div id="tip{{ tip.id }}" class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content | linebreaks}}</div>
                     <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.user }}</p>
 
                     {% if not tip.approved and tip.user == user %}
                     <p class="approval">This tip is awaiting approval</p>
                     {% endif %}</p>
+                    {% if user.is_authenticated and tip.user == user %}
+                    <button class="btn btn-edit" tip_id="{{ tip.id }}" destination_id="{{ destination.id}}">Edit</button>
+                    {% endif %}
                 </div>    
             </div>
             {% empty %}
@@ -95,7 +98,7 @@
             {% for comment in destination.comments.all %}
             <div class="card mb-2">
                 <div class="card-body {% if not comment.approved and comment.user == user %}faded{% elif not comment.approved %}d-none{% endif %}">
-                    <p id="comment{{ comment.id }}" class="card-id">{{ comment.text | linebreaks }}</p>
+                    <div id="comment{{ comment.id }}" class="card-id">{{ comment.text | linebreaks }}</div>
                     <p  class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
 
                     {% if not comment.approved and comment.user == user %}
@@ -134,4 +137,5 @@
 {% endblock content %}
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/tips.js' %}"></script>
 {% endblock %}

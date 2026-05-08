@@ -87,3 +87,24 @@ def comment_edit(request, destination_id, comment_id):
             messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
 
     return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
+
+
+def tip_edit(request, destination_id, tip_id):
+
+    """View for editing tips"""
+
+    if request.method == "POST":
+        destination = get_object_or_404(Destination, pk=destination_id)
+        tip = get_object_or_404(Tip, pk=tip_id)
+        tip_form = TipForm(data=request.POST, instance=tip)
+        if tip_form.is_valid() and tip.user == request.user:
+            tip = tip_form.save(commit=False)
+            tip.destination = destination
+            tip.approved = False
+            tip.save()
+            messages.add_message(request, messages.SUCCESS, 'Your tip was successfully updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
+    
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
+
