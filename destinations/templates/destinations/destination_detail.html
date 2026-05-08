@@ -64,7 +64,7 @@
                     <form id="tipForm" method="post" style="margin-top: 1.3em;">
                         {% csrf_token %}
                         {{ tip_form | crispy }}
-                        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        <button id="tipSubmitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
         </form>
         {% else %}
         <p>Log in to share a tip</p>
@@ -95,14 +95,14 @@
             {% for comment in destination.comments.all %}
             <div class="card mb-2">
                 <div class="card-body {% if not comment.approved and comment.user == user %}faded{% elif not comment.approved %}d-none{% endif %}">
-                    <p class="card-id">{{ comment.text | linebreaks }}</p>
-                    <p id="comment{{ comment.id}}" class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
+                    <p id="comment{{ comment.id }}" class="card-id">{{ comment.text | linebreaks }}</p>
+                    <p  class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
 
                     {% if not comment.approved and comment.user == user %}
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.user == user %}
-                    <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-edit" comment_id="{{ comment.id }}" destination_id="{{ destination.id}}">Edit</button>
                     {% endif %}
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <form id="commentForm" method="post" style="margin-top: 1.3em;">
                         {% csrf_token %}
                         {{ comment_form | crispy}}
-                        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        <button id="commentSubmitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
                     </form>
                     {% else %}
                     <p>Log in to leave a comment</p>

@@ -80,10 +80,10 @@ def comment_edit(request, destination_id, comment_id):
         if comment_form.is_valid() and comment.user == request.user:
             comment = comment_form.save(commit=False)
             comment.destination = destination
-            comment.approve = False
+            comment.approved = False
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment was updated successfully!')
         else: 
             messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
 
-            return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
