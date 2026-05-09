@@ -37,9 +37,14 @@ for (let button of editButtons){
 * the user for confirmation before deletion.
 */
 for (let button of deleteButtons) {
-  button.addEventListener("click", (e) => {
-    let commentId = e.currentTarget.getAttribute("comment_id");
-    deleteConfirm.href = `delete_comment/${commentId}`;
-    deleteModal.show();
-  });
+    button.addEventListener('click', (e) => {
+
+        let commentId = e.currentTarget.getAttribute("comment_id");
+        let destinationId = e.currentTarget.getAttribute("destination_id");
+
+        deleteConfirm.href =
+            `/${destinationId}/delete_comment/${commentId}`;
+
+        deleteModal.show();
+    });
 }

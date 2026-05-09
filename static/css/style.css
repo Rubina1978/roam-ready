@@ -140,7 +140,8 @@ body {
     background: transparent;
 }
 
-.btn-delete {
+.btn-delete,
+.btn-delete-tip {
     color: #fff;
     background: #E84610;
 }

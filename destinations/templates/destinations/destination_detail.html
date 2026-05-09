@@ -49,7 +49,7 @@
                     <p class="approval">This tip is awaiting approval</p>
                     {% endif %}</p>
                     {% if user.is_authenticated and tip.user == user %}
-                    <button class="btn btn-delete" tip_id="{{ tip.id }}">Delete</button>
+                    <button class="btn btn-delete-tip" tip_id="{{ tip.id }}" destination_id="{{ destination.id }}">Delete</button>
                     <button class="btn btn-edit" tip_id="{{ tip.id }}" destination_id="{{ destination.id}}">Edit</button>
                     {% endif %}
                 </div>    
@@ -106,7 +106,7 @@
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.user == user %}
-                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-delete" comment_id="{{ comment.id }}" destination_id="{{ destination.id }}">Delete</button>
                     <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>

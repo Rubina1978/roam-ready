@@ -114,7 +114,7 @@ def tip_edit(request, destination_id, tip_id):
 
 def comment_delete(request, destination_id,comment_id):
     destination = get_object_or_404(Destination, pk=destination_id)
-    comment = get_object_or_404(Comment, pk=comment_id)
+    comment = get_object_or_404(Comment, pk=comment_id, destination=destination)
     if comment.user == request.user:
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')

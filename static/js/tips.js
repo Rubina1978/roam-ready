@@ -4,6 +4,7 @@
 // const submitButton = document.getElementById("tipSubmitButton");
 
 const tipEditButtons = document.getElementsByClassName("btn-edit");
+const tipDeleteButtons = document.getElementsByClassName("btn-delete-tip");
 // const tipType = document.getElementById("id_tip_type");
 const tipContent = document.getElementById("id_content");
 const tipForm = document.getElementById("tipForm");
@@ -21,13 +22,12 @@ const tipSubmitButton = document.getElementById("tipSubmitButton");
 
 
 for (let button of tipEditButtons){
-    button.addEventListener('click', (e) =>{
-        let tipId = e.currentTarget.getAttribute("tip_id");
-        let destinationId = e.currentTarget.getAttribute("destination_id");
-        let tipText = document.getElementById(`tip${tipId}`).innerText;
-        tipContent.value = tipText;
-        tipSubmitButton.innerText = "Update";
-        tipForm.setAttribute("action", `edit_tip/${tipId}`)
+  button.addEventListener('click', (e) =>{
+    let tipId = e.currentTarget.getAttribute("tip_id");
+    let tipText = document.getElementById(`tip${tipId}`).innerText;
+    tipContent.value = tipText;
+    tipSubmitButton.innerText = "Update";
+    tipForm.setAttribute("action", `edit_tip/${tipId}`)
 });
 }
 
@@ -43,10 +43,11 @@ for (let button of tipEditButtons){
 * - Displays a confirmation modal (`deleteModal`) to prompt 
 * the user for confirmation before deletion.
 */
-for (let button of deleteButtons) {
+for (let button of tipDeleteButtons) {
   button.addEventListener("click", (e) => {
     let tipId = e.currentTarget.getAttribute("tip_id");
-    deleteConfirm.href = `delete_tip/${tipId}`;
+    let destinationId = e.currentTarget.getAttribute("destination_id");
+    deleteConfirm.href = `/${destinationId}/delete_tip/${tipId}/`;
     deleteModal.show();
   });
 }
