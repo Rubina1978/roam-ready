@@ -68,6 +68,8 @@ def destination_detail(request, pk):
          
     )
 
+# editing comments and tips
+
 def comment_edit(request, destination_id, comment_id):
     """View for editing comments"""
     """built with help of ChatGPT"""
@@ -108,3 +110,27 @@ def tip_edit(request, destination_id, tip_id):
     
     return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
 
+# deleting comments and tips
+
+def comment_delete(request, destination_id,comment_id):
+    destination = get_object_or_404(Destination, pk=destination_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if comment.user == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comment!')
+
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id]))
+        
+
+def tip_delete(request, destination_id, tip_id):
+    destination = get_object_or_404(Destination, pk=destination_id)
+    tip = get_object_or_404(Tip, pk=tip_id)
+    if tip.user == request.user:
+        tip.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your tip has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your tips!')
+
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id]))

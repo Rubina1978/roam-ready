@@ -30,18 +30,23 @@ for (let button of tipEditButtons){
         tipForm.setAttribute("action", `edit_tip/${tipId}`)
 });
 }
-// const tipButtons = document.getElementsByClassName("btn-edit");
-// const tipContent = document.getElementById("id_content");
-// const tipType = document.getElementById("id_tip_type");
-// const tipForm = document.getElementById("tipForm");
-// const tipSubmit = document.getElementById("tipSubmitButton");
 
-// for (let btn of tipButtons) {
-// btn.addEventListener('click', function () {
-// const tipId = this.getAttribute('tip_id');
-// tipContent.value = document.getElementById('tip' + tipId).innerText;
-// tipType.value = document.getElementById('tiptype' + tipId).innerText;
-// tipSubmit.innerText = 'Update';
-// tipForm.action = /${this.getAttribute('destination_id')}/edit_tip/${tipId};
-// });
-// }
+// deleting of tips
+
+/**
+* Initializes deletion functionality for the provided delete buttons.
+* 
+* For each button in the `deleteButtons` collection:
+* - Retrieves the associated comment's ID upon click.
+* - Updates the `deleteConfirm` link's href to point to the 
+* deletion endpoint for the specific comment.
+* - Displays a confirmation modal (`deleteModal`) to prompt 
+* the user for confirmation before deletion.
+*/
+for (let button of deleteButtons) {
+  button.addEventListener("click", (e) => {
+    let tipId = e.currentTarget.getAttribute("tip_id");
+    deleteConfirm.href = `delete_tip/${tipId}`;
+    deleteModal.show();
+  });
+}
