@@ -13,14 +13,18 @@
 
                 {% for destination in destinations %}
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4 position-relative">
                         {% if destination.featured_image and destination.featured_image.url %}
                             <img class="card-img-top" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
                         {% else %}
                             <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
                         {% endif %}
                         <div class="card-body">
-                            <h2 class="card-title">{{ destination.name }}</h2>
+                            <h2 class="card-title">
+                                <a href="{% url 'destination_detail' destination.id %}" class="text-decoration-none text-dark stretched-link">
+                                    {{ destination.name }}
+                                </a>
+                            </h2>
                             <p class="card-text">{{ destination.description|truncatewords:25 }}</p>
                             <p class="card-text text-muted">{{ destination.country }}</p>
                             <p class="created_on">{{ destination.created_on }}</p>
