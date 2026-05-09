@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -13,31 +14,17 @@
                 {% for destination in destinations %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                      {% comment %} link prepared for image {% endcomment %}
-                      {% if destination.image %}
-                          <img src="{{ destination.image.url }}" class="card-img-top" alt="{{ destination.name }}">
-                       {% endif %}  
-
-                          <div class="card-body">
-                         
-                          {% comment %} link prepared for detail page, used chatgpt to set the link {% endcomment %}
-                          <a href="{% url 'destination_detail' destination.pk %}" class="text-decoration-none post-link">
-                            <h2 class="card-title">
-                                {{ destination.name }}
-                            </h2>
-                          </a>
-                            <p class="card-text">
-                                {{ destination.description|truncatewords:25 }}
-                            </p>
-
-                            <p class="card-text text-muted">
-                                {{ destination.country }}
-                            </p>
-                          <p class="created_on">
-                          {{ destination.created_on}}
-                        </p>
+                        {% if destination.featured_image and destination.featured_image.url %}
+                            <img class="card-img-top" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
+                        {% else %}
+                            <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h2 class="card-title">{{ destination.name }}</h2>
+                            <p class="card-text">{{ destination.description|truncatewords:25 }}</p>
+                            <p class="card-text text-muted">{{ destination.country }}</p>
+                            <p class="created_on">{{ destination.created_on }}</p>
                         </div>
-                       
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -21,6 +22,7 @@ class Destination(models.Model):
     name = models.CharField(max_length=100)
     country = CountryField()
     category = models.CharField(max_length=50)
+    featured_image = CloudinaryField('image', default='placeholder')
     description = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)
