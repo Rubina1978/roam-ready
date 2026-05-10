@@ -50,7 +50,7 @@
                     {% endif %}</p>
                     {% if user.is_authenticated and tip.user == user %}
                     <button class="btn btn-delete-tip" tip_id="{{ tip.id }}" destination_id="{{ destination.id }}">Delete</button>
-                    <button class="btn btn-edit" tip_id="{{ tip.id }}" destination_id="{{ destination.id}}">Edit</button>
+                    <button class="btn btn-edit-tip" tip_id="{{ tip.id }}" destination_id="{{ destination.id}}">Edit</button>
                     {% endif %}
                 </div>    
             </div>
