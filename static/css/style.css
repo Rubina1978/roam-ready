@@ -112,7 +112,8 @@ body {
 }
 
 .btn-signup,
-.btn-edit-tip {
+.btn-edit-tip,
+.btn-edit {
     background-color: #188181;
     color: #fff;
 }
