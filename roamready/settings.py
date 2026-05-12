@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from django.contrib.messages import constants as messages
 from pathlib import Path
 if os.path.isfile("env.py"):
@@ -27,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key')
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
@@ -102,6 +103,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# PostgreSQL (commented out for local development)
+# DATABASES = {
+#     'default':
+#     dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
+
+
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com"]
 
 # Password validation
