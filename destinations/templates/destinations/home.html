@@ -5,7 +5,25 @@
 
 
 <div class="container-fluid">
-  <h1>RoamReady Destinations</h1>
+  <h1>Welcome to RoamReady!</h1>
+    <div class row>
+        <div class="col-12 mt-4">
+            <p>
+               From travelers to travelers - discover cities, nature escapes, hidden gems, and unforgettable travel experiences with RoamReady. Explore destination guides, travel inspiration, local highlights, and outdoor adventures created for people who love discovering new places around the world.
+            </p>
+            <p>
+               From relaxing lakeside retreats to vibrant European capitals and breathtaking natural landscapes, RoamReady helps you find your next adventure. 
+            </p>
+            <p>
+              Have your own travel tips or experiences to share? Create an account to leave comments, share helpful advice, and connect with other travellers exploring destinations around the world. 
+            </p>
+            <div class="text-center mb-4 {% if user.is_authenticated %}d-none{% endif %}">
+                <a href="{% url 'account_signup' %}" class="btn btn-signup btn-lg">Sign up to share your comments or personal tips</a>
+                <p class="mt-2">Already registered? <a href="{% url 'account_login' %}" class="login-option">Log in</a></p>
+            </div>
+            <h2 class="text-center mt-5">Trips Ideas</h2>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-12 mt-3 left">
@@ -21,7 +39,7 @@
                         {% endif %}
                         <div class="card-body">
                             <h2 class="card-title">
-                                <a href="{% url 'destination_detail' destination.id %}" class="text-decoration-none text-dark stretched-link">
+                                <a href="{% url 'destination_detail' destination.id %}" class="destination-link text-decoration-none stretched-link">
                                     {{ destination.name }}
                                 </a>
                             </h2>
