@@ -3,7 +3,7 @@
 // const tipForm = document.getElementById("tipForm");
 // const submitButton = document.getElementById("tipSubmitButton");
 
-const tipEditButtons = document.getElementsByClassName("btn-edit");
+const tipEditButtons = document.getElementsByClassName("btn-edit-tip");
 const tipDeleteButtons = document.getElementsByClassName("btn-delete-tip");
 // const tipType = document.getElementById("id_tip_type");
 const tipContent = document.getElementById("id_content");

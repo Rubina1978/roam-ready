@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as messages
 from pathlib import Path
 if os.path.isfile("env.py"):
     import env  # noqa
@@ -133,6 +134,13 @@ USE_I18N = True
 
 USE_TZ = True
 
+"""
+color coding of messages 
+"""
+MESSAGE_TAGS ={
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
