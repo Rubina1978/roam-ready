@@ -1,18 +1,18 @@
 
 
 body {
-    background-color: #F9FAFC;
+    background-color: #F9FBFB;
 }
 
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #4A4C4C;
 }
 
 .red-r {
-    color: #e83010;
+    color: #DE1D1F;
 }
 
 .destination-title {
@@ -30,15 +30,15 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #FFFEFF;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #4A4C4C;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #F9FBFB;
 }
 
 .card {
@@ -74,7 +74,7 @@ body {
 }
 
 .author {
-    color: white;
+    color: #FFFEFF;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -89,8 +89,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: #4A4C4C;
+    color: #FFFEFF;
     position: relative;
 }
 
@@ -106,7 +106,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #4A4C4C;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -120,7 +120,7 @@ body {
 }
 
 .destination-link {
-    color: #445261;
+    color: #4A4C4C;
     transition: color 0.2s ease;
 }
 
@@ -137,46 +137,46 @@ body {
 .btn-signup,
 .btn-edit-tip,
 .btn-edit {
-    background-color: #188181;
-    color: #fff;
+    background-color: #1D8181;
+    color: #FFFEFF;
     font-weight: 600;
 }
 
 .btn-signup:hover,
 .btn-edit-tip:hover,
 .btn-edit:hover {
-    background-color: #fff;
+    background-color: #FFFEFF;
     color: #188181;
-    border: 2px solid #188181
+    border: 2px solid #1D8181
 } 
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #FFFEFF;
+    color: #1D8181;
 }
 
 .link {
-    color: #23BBBB;
+    color: #1D8181;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #4A4C4C;
     text-decoration: underline;
 }
 
 .btn-delete,
 .btn-delete-tip {
-    color: #fff;
+    color: #FFFEFF;
     background-color: #e83010;
     font-weight: 500;
 }
 .btn-delete:hover,
 .btn-delete-tip:hover {
     color: #e83010;
-    background-color: #fff;
+    background-color: #FFFEFF;
     border: 2px solid #e83010;
 }
 .faded {
