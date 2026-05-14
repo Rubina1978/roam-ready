@@ -5,8 +5,9 @@
 
 
 <div class="container-fluid">
-  <h1>Welcome to RoamReady!</h1>
     <div class row>
+        <div class="container">
+        <h1>Welcome to RoamReady!</h1>
         <div class="col-12 mt-4 intro">
             <p>
                From travelers to travelers - discover cities, nature escapes, hidden gems, and unforgettable travel experiences with RoamReady. Explore destination guides, travel inspiration, local highlights, and outdoor adventures created for people who love discovering new places around the world.
@@ -21,10 +22,12 @@
                 <a href="{% url 'account_signup' %}" class="btn btn-signup btn-lg">Sign up to share your comments or personal tips</a>
                 <p class="mt-2">Already registered? <a href="{% url 'account_login' %}" class="login-option">Log in</a></p>
             </div>
+        </div>
             <h2 class="text-center mt-5">Trips Ideas</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -63,8 +66,9 @@
 
             </div>
         </div>
-    </div>
+        </div>
 
+    </div>
 </div>
   {% if is_paginated %}
     <nav aria-label="Page navigation">
