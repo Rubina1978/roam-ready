@@ -11,6 +11,7 @@ body {
     color: #4A4C4C;
 }
 
+
 .red-r {
     color: #DE1D1F;
 }
@@ -18,6 +19,7 @@ body {
 .destination-title {
     margin-top: 10%;
     margin-left: 5%;
+    color: #e9f0f0;
 }
 
 .destination-subtitle {
@@ -46,7 +48,9 @@ body {
     background-color: transparent;
     overflow: hidden;
 }
-
+.intro {
+    font-size: 1.1rem;
+}
 .card-img-top {
     width: 100%;
     height: 300px;
@@ -92,6 +96,7 @@ body {
     background-color: #4A4C4C;
     color: #FFFEFF;
     position: relative;
+    z-index: 200;
 }
 
 .masthead-image {

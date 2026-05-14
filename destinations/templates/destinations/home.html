@@ -7,7 +7,7 @@
 <div class="container-fluid">
   <h1>Welcome to RoamReady!</h1>
     <div class row>
-        <div class="col-12 mt-4">
+        <div class="col-12 mt-4 intro">
             <p>
                From travelers to travelers - discover cities, nature escapes, hidden gems, and unforgettable travel experiences with RoamReady. Explore destination guides, travel inspiration, local highlights, and outdoor adventures created for people who love discovering new places around the world.
             </p>
@@ -44,7 +44,10 @@
                                 </a>
                             </h2>
                             <p class="card-text">{{ destination.description|truncatewords:25 }}</p>
-                            <p class="card-text text-muted">{{ destination.country }}</p>
+                                <p class="card-text text-muted">
+                                    <img class="flag" src="https://flagcdn.com/24x18/{{ destination.country.code|lower }}.png" alt="{{ destination.country.name }} flag">
+                                    <span class="country-text">{{ destination.country }}</span>
+                                </p>
                             <p class="created_on">{{ destination.created_on }}</p>
                         </div>
                     </div>

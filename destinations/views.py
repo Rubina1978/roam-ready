@@ -26,7 +26,8 @@ def destination_detail(request, pk):
     comment_count = destination.comments.filter(approved=True).count()
     tips = destination.tips.all().order_by("tip_type")
 
-#{% comment %}handling the comments{ % endcomment %}
+
+# handling the comments
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -52,7 +53,7 @@ def destination_detail(request, pk):
             messages.add_message(
                 request, messages.SUCCESS,
                 'Tip submitted and awaiting approval'
-    )
+            )
    
     tip_form = TipForm()
 
@@ -60,7 +61,7 @@ def destination_detail(request, pk):
         request, 
         "destinations/destination_detail.html", 
         {"destination": destination,
-         "comments":comments,
+         "comments": comments,
          "comment_count": comment_count,
          "comment_form": comment_form,
          "tip_form": tip_form
@@ -69,6 +70,7 @@ def destination_detail(request, pk):
     )
 
 # editing comments and tips
+
 
 def comment_edit(request, destination_id, comment_id):
     """View for editing comments"""
@@ -85,7 +87,7 @@ def comment_edit(request, destination_id, comment_id):
             comment.approved = False
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment was updated successfully!')
-        else: 
+        else:
             messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
 
     return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
@@ -107,12 +109,13 @@ def tip_edit(request, destination_id, tip_id):
             messages.add_message(request, messages.SUCCESS, 'Your tip was successfully updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
-    
+            
     return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
 
 # deleting comments and tips
 
-def comment_delete(request, destination_id,comment_id):
+
+def comment_delete(request, destination_id, comment_id):
     destination = get_object_or_404(Destination, pk=destination_id)
     comment = get_object_or_404(Comment, pk=comment_id, destination=destination)
     if comment.user == request.user:
