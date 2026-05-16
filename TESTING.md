@@ -56,7 +56,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| destinations | [destination_detail.html](https://github.com/Rubina1978/roam-ready/blob/main/destinations/templates/destinations/destination_detail.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-destinations-destination_detail.png) | ⚠️ Notes (if applicable) |
+| destinations | [destination_detail.html](https://roamready-8bd1c197ca5b.herokuapp.com/12/) | https://roamready-8bd1c197ca5b.herokuapp.com/12/ | ![screenshot](documentation\html-validation\destination-detail-page.png) |  |
 | destinations | [home.html](https://roamready-8bd1c197ca5b.herokuapp.com/) | https://roamready-8bd1c197ca5b.herokuapp.com/ | ![screenshot](documentation\html-validation\destinations-home.png) |  |
 | templates | [email_confirm.html](https://github.com/Rubina1978/roam-ready/blob/main/templates/account/email_confirm.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-email_confirm.png) | ⚠️ Notes (if applicable) |
 | templates | [login.html](https://github.com/Rubina1978/roam-ready/blob/main/templates/account/login.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-login.png) | ⚠️ Notes (if applicable) |
