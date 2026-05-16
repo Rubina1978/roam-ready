@@ -35,10 +35,10 @@ class Destination(models.Model):
     
 
 class Tip(models.Model):
-    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="tips")
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="tips") # noqa
     tip_type = models.CharField(max_length=100, choices=TIP_TYPES)
     content = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tips", null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tips", null=True, blank=True) # noqa
     approved = models.BooleanField(default=False)
 
     class Meta:
@@ -49,8 +49,8 @@ class Tip(models.Model):
     
 
 class Comment(models.Model):
-    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="comments") # noqa
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments", null=True, blank=True) # noqa
     text = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
