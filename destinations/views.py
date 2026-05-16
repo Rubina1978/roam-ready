@@ -58,15 +58,14 @@ def destination_detail(request, pk):
     tip_form = TipForm()
 
     return render(
-        request, 
-        "destinations/destination_detail.html", 
+        request,
+        "destinations/destination_detail.html",
         {"destination": destination,
          "comments": comments,
          "comment_count": comment_count,
          "comment_form": comment_form,
          "tip_form": tip_form
          },
-         
     )
 
 # editing comments and tips
@@ -86,11 +85,11 @@ def comment_edit(request, destination_id, comment_id):
             comment.destination = destination
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment was updated successfully!')
+            messages.add_message(request, messages.SUCCESS, 'Comment was updated successfully!') # noqa
         else:
-            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
+            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again') # noqa
 
-    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id])) # noqa
 
 
 def tip_edit(request, destination_id, tip_id):
@@ -106,25 +105,25 @@ def tip_edit(request, destination_id, tip_id):
             tip.destination = destination
             tip.approved = False
             tip.save()
-            messages.add_message(request, messages.SUCCESS, 'Your tip was successfully updated!')
+            messages.add_message(request, messages.SUCCESS, 'Your tip was successfully updated!') # noqa
         else:
-            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again')
+            messages.add_message(request, messages.ERROR, 'Sorry an error occured, please try again') # noqa
             
-    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id]))
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination_id])) # noqa
 
 # deleting comments and tips
 
 
 def comment_delete(request, destination_id, comment_id):
     destination = get_object_or_404(Destination, pk=destination_id)
-    comment = get_object_or_404(Comment, pk=comment_id, destination=destination)
+    comment = get_object_or_404(Comment, pk=comment_id, destination=destination) # noqa
     if comment.user == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')
+        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!') # noqa
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comment!')
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comment!') # noqa
 
-    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id]))
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id])) # noqa
         
 
 def tip_delete(request, destination_id, tip_id):
@@ -132,8 +131,8 @@ def tip_delete(request, destination_id, tip_id):
     tip = get_object_or_404(Tip, pk=tip_id)
     if tip.user == request.user:
         tip.delete()
-        messages.add_message(request, messages.SUCCESS, 'Your tip has been deleted!')
+        messages.add_message(request, messages.SUCCESS, 'Your tip has been deleted!') # noqa
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your tips!')
+        messages.add_message(request, messages.ERROR, 'You can only delete your tips!') # noqa
 
-    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id]))
+    return HttpResponseRedirect(reverse('destination_detail', args=[destination.id])) # noqa

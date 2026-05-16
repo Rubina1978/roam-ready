@@ -11,11 +11,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| destinations | [destination_detail.html](https://roamready-8bd1c197ca5b.herokuapp.com/12/) | https://validator.w3.org/nu/?useragent=Validator.nu%2FLV+https%3A%2F%2Fvalidator.w3.org%2Fservices&acceptlanguage=&doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2F#textarea | ![screenshot](documentation/html-validation/destination-detail-page.png) |  |
-| destinations | [home.html](https://roamready-8bd1c197ca5b.herokuapp.com/) | https://validator.w3.org/nu/?useragent=Validator.nu%2FLV+https%3A%2F%2Fvalidator.w3.org%2Fservices&acceptlanguage=&doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2F. |![screenshot](documentation/html-validation/destinations-home.png) |
-| templates | [login.html](https://roamready-8bd1c197ca5b.herokuapp.com/accounts/login/) | https://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Flogout%2F | ![screenshot](documentation/html-validation/login.png) | |
-| templates | [logout.html](https://roamready-8bd1c197ca5b.herokuapp.com/accounts/logout/) | https://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Flogout%2F | ![screenshot](documentation/html-validation/logout.png) | |
-| templates | [signup.html](https://roamready-8bd1c197ca5b.herokuapp.com/accounts/signup/) | ttps://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Fsignup%2F | ![screenshot](documentation/html-validation/signup.png) | Unable to resolve these errors flagged by code validator however signup is function correctly|
+| destinations | [destination_detail.html](https://github.com/Rubina1978/roam-ready/blob/main/destinations/templates/destinations/destination_detail.html) | https://validator.w3.org/nu/?useragent=Validator.nu%2FLV+https%3A%2F%2Fvalidator.w3.org%2Fservices&acceptlanguage=&doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2F#textarea | ![screenshot](documentation/html-validation/destination-detail-page.png) |  |
+| destinations | [home.html](https://github.com/Rubina1978/roam-ready/blob/main/destinations/templates/destinations/home.html) | https://validator.w3.org/nu/?useragent=Validator.nu%2FLV+https%3A%2F%2Fvalidator.w3.org%2Fservices&acceptlanguage=&doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2F. |![screenshot](documentation/html-validation/destinations-home.png) |
+| templates | [login.html](https://github.com/Rubina1978/roam-ready/blob/main/templates/account/login.html) | https://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Flogout%2F | ![screenshot](documentation/html-validation/login.png) | |
+| templates | [logout.html](https://github.com/Rubina1978/roam-ready/blob/main/templates/account/logout.html) | https://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Flogout%2F | ![screenshot](documentation/html-validation/logout.png) | |
+| templates | [signup.html](https://github.com/Rubina1978/roam-ready/blob/main/templates/account/signup.html) | ttps://validator.w3.org/nu/?doc=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2Faccounts%2Fsignup%2F | ![screenshot](documentation/html-validation/signup.png) | Unable to resolve these errors flagged by code validator however signup is function correctly|
 
 
 ### CSS
@@ -26,35 +26,14 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | --- | --- | --- | --- | --- |
 | static | [style.css](https://github.com/Rubina1978/roam-ready/blob/main/static/css/style.css) | https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Froamready-8bd1c197ca5b.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en | ![screenshot](documentation/css-validation/css-style-validation.png) |  |
 
-
 ### JavaScript
-
-⚠️ INSTRUCTIONS ⚠️
-
-If using modern JavaScript (ES6) methods, then make sure to include the following line at the very top of every single JavaScript file in your project (this should remain in your files for submission as well):
-
-`/* jshint esversion: 11 */`
-
-If you are also including jQuery (`$`), then the updated format will be:
-
-`/* jshint esversion: 11, jquery: true */`
-
-This allows the JShint validator to recognize modern ES6 methods, such as: `let`, `const`, `template literals`, `arrow functions (=>)`, etc.
-
-**IMPORTANT**: External resources
-
-Sometimes we'll write JavaScript that imports variables from other files, such as "an array of questions" from `questions.js`, which are used within the main `script.js` file elsewhere. If that's the case, the JShint validation tool doesn't know how to recognize "unused variables" that would normally be imported locally when running your own project. These warnings are acceptable, so showcase on your screenshot(s).
-
-The same thing applies when using external libraries such as Stripe, Leaflet, Bootstrap, Materialize, etc. To instantiate these components, we need to use their respective declarator. Again, the JShint validation tool would flag these as "undefined/unused variables". These warnings are acceptable, so showcase on your screenshot(s).
-
-⚠️ --- END --- ⚠️
 
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [comments.js](https://github.com/Rubina1978/roam-ready/blob/main/static/js/comments.js) |  | ![screenshot](documentation/validation/js-static-comments.png) | ⚠️ Notes (if applicable) |
-| static | [tips.js](https://github.com/Rubina1978/roam-ready/blob/main/static/js/tips.js) |  | ![screenshot](documentation/validation/js-static-tips.png) | ⚠️ Notes (if applicable) |
+| static | [comments.js](https://github.com/Rubina1978/roam-ready/blob/main/static/js/comments.js) |  | ![screenshot](documentation/jshint/comments-js.png) |  |
+| static | [tips.js](https://github.com/Rubina1978/roam-ready/blob/main/static/js/tips.js) |  | ![screenshot](documentation/jshint/tips-js.png) |  |
 
 
 ### Python
