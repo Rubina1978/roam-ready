@@ -41,7 +41,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h3>Tips</h3>
+            <h2>Tips</h2>
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
                 <div class="card-body  {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
@@ -80,7 +80,7 @@
       </div>
         </div>
     </div>
-        </div>
+        
         
     <!-- Creating New Tip-->
     
