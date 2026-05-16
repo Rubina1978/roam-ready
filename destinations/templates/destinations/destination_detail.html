@@ -45,7 +45,7 @@
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
                 <div class="card-body  {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
-                    <h5 id="tiptype{{ tip.id }}" class="card-title">{{ tip.tip_type}}</h5>
+                    <h4 id="tiptype{{ tip.id }}" class="card-title">{{ tip.tip_type}}</h4>
                     <div id="tip{{ tip.id }}" class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content | linebreaks}}</div>
                     <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.user }}</p>
 
