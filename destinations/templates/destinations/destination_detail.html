@@ -1,54 +1,46 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block content %}
 
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
                 <h1 class="destination-title">{{ destination.name }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
                 <p class="destination-subtitle">{{ destination.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                 {% if destination.featured_image and destination.featured_image.url %}
-                            <img class="card-img-top rounded scale" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
-                        {% else %}
-                            <img class="card-img-top" src="{% static 'images/default.png' %}" alt="placeholder image">
-                        {% endif %}
+                {% if destination.featured_image and destination.featured_image.url %}
+                    <img class="card-img-top rounded scale" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
+                {% else %}
+                    <img class="card-img-top" src="{% static 'images/default.png' %}" alt="placeholder image">
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-    
-    <div class="container">
-        <div class="row">
-            <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body ">
-                
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text">
-                    {{ destination.description | safe }}
-                </p>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4 mt-3 left top">
+            <div class="card-body">
+                <p class="card-text">{{ destination.description | safe }}</p>
             </div>
         </div>
     </div>
 </div>
-{% comment %} {% tips section %} {% endcomment %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2>Tips</h2>
             {% for tip in destination.tips.all %}
             <div class="card mb-3">
-                <div class="card-body  {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
-                    <h4 id="tiptype{{ tip.id }}" class="card-title">{{ tip.tip_type}}</h4>
-                    <div id="tip{{ tip.id }}" class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content | linebreaks}}</div>
+                <div class="card-body {% if not tip.approved and tip.user == user %}faded{% elif not tip.approved %}d-none{% endif %}">
+                    <h3 id="tiptype{{ tip.id }}" class="card-title ">{{ tip.tip_type }}</h3>
+                    <div id="tip{{ tip.id }}" class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.content | linebreaks }}</div>
                     <p class="card-text {% if not tip.approved and tip.user == user %}faded{% endif %}">{{ tip.user }}</p>
 
                     {% if not tip.approved and tip.user == user %}
@@ -56,9 +48,9 @@
                     {% endif %}
                     {% if user.is_authenticated and tip.user == user %}
                     <button class="btn btn-delete-tip" data-tip-id="{{ tip.id }}" data-destination-id="{{ destination.id }}">Delete</button>
-                    <button class="btn btn-edit-tip" data-tip-id="{{ tip.id }}" data-destination-id="{{ destination.id}}">Edit</button>
+                    <button class="btn btn-edit-tip" data-tip-id="{{ tip.id }}" data-destination-id="{{ destination.id }}">Edit</button>
                     {% endif %}
-                </div>    
+                </div>
             </div>
             {% empty %}
             <p class="text-muted">No tips yet</p>
@@ -75,19 +67,16 @@
                         {% csrf_token %}
                         {{ tip_form | crispy }}
                         <button id="tipSubmitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
-        </form>
-        {% else %}
-        <p>Log in to share a tip</p>
-        {% endif %}
-      </div>
+                    </form>
+                    {% else %}
+                    <p>Log in to share a tip</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
-        
-        
-    <!-- Creating New Tip-->
-
 </div>
-    {% comment %} displaying commentcount {% endcomment %}
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -108,7 +97,7 @@
             <div class="card mb-2">
                 <div class="card-body {% if not comment.approved and comment.user == user %}faded{% elif not comment.approved %}d-none{% endif %}">
                     <div id="comment{{ comment.id }}" class="card-id">{{ comment.text | linebreaks }}</div>
-                    <p  class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
+                    <p class="card-text {% if not comment.approved and comment.user == user %}faded{% endif %}">{{ comment.user }}, {{ comment.created_on }}</p>
 
                     {% if not comment.approved and comment.user == user %}
                     <p class="approval">This comment is awaiting approval</p>
@@ -132,7 +121,7 @@
                     <p class="mb-2">Posting as: {{ user.username }}</p>
                     <form id="commentForm" method="post" style="margin-top: 1.3em;">
                         {% csrf_token %}
-                        {{ comment_form | crispy}}
+                        {{ comment_form | crispy }}
                         <button id="commentSubmitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
                     </form>
                     {% else %}
@@ -143,30 +132,28 @@
         </div>
     </div>
 </div>
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-    aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete comment or tip?</h5>
-        <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete your comment or tip?
-        This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-          data-bs-dismiss="modal">Close</button>
-        <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Delete</a>
-      </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment or tip?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment or tip?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
 {% endblock content %}
+
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
 <script src="{% static 'js/tips.js' %}"></script>
