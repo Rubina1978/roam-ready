@@ -23,7 +23,7 @@ const tipSubmitButton = document.getElementById("tipSubmitButton");
 
 for (let button of tipEditButtons){
   button.addEventListener('click', (e) =>{
-    let tipId = e.currentTarget.getAttribute("tip_id");
+    let tipId = e.currentTarget.getAttribute("data-tip-id");
     let tipTypeValue = document.getElementById(`tiptype${tipId}`).innerText;
     let tipText = document.getElementById(`tip${tipId}`).innerText;
     tipType.value = tipTypeValue;
@@ -47,8 +47,8 @@ for (let button of tipEditButtons){
 */
 for (let button of tipDeleteButtons) {
   button.addEventListener("click", (e) => {
-    let tipId = e.currentTarget.getAttribute("tip_id");
-    let destinationId = e.currentTarget.getAttribute("destination_id");
+    let tipId = e.currentTarget.getAttribute("data-tip-id");
+    let destinationId = e.currentTarget.getAttribute("data-destination-id");
     deleteConfirm.href = `/${destinationId}/delete_tip/${tipId}/`;
     deleteModal.show();
   });
