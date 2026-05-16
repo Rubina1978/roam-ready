@@ -13,9 +13,9 @@
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if destination.featured_image and destination.featured_image.url %}
-                    <img class="card-img-top rounded scale" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
+                    <img class="card-img-top rounded" src="{{ destination.featured_image.url }}" alt="{{ destination.name }}">
                 {% else %}
-                    <img class="card-img-top" src="{% static 'images/default.png' %}" alt="placeholder image">
+                    <img class="card-img-top rounded" src="{% static 'images/default.png' %}" alt="placeholder image">
                 {% endif %}
             </div>
         </div>
