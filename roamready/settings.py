@@ -27,7 +27,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.environ.get('SECRET_KEY', '479eb0c31a97ed4885c5653fad21fe455d85f1e637a667cabe593bbc65b7a7a6')
+SECRET_KEY = os.environ.get('SECRET_KEY', '479eb0c31a97ed4885c5653fad21fe455d85f1e637a667cabe593bbc65b7a7a6') # noqa
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
